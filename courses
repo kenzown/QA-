@@ -1,0 +1,54 @@
+show databases;
+use northwind;
+           Task:
+           *Show all info about the employee with ID - 2.* 
+select * from Employees where EmployeeID = 2;
+           *Show contact name of suppliers from cities begin with letter S.*
+select * from Suppliers where City like 'S%';
+           *Show first 20 product names.* 
+select * from Products limit 20;
+           *Show the list of german customers’ names.* 
+select ContactName from Customers where Country = 'Germany';
+           *Show the list of product names whose unit prices are between 20 and 30.* 
+select ProductName from Products where UnitPrice between 20 and 30;
+            *Show the most expensive product.* 
+select * from Products order by UnitPrice desc limit 1;
+            *Show the list of products whose unit prices is greater than 20.* 
+select * from Products where UnitPrice >20;
+            *Show the list of employees whose salary is between 2000 and 2500.* 
+select * from Employees where Salary between 2000 and 2500;
+             *Show the list of categories whose names end with letter S.*  
+select * from Categories where CategoryName like '%S';
+             *Show the list of companies from Paris.* 
+select CompanyName from Customers where City = 'Paris';
+             *Show the first and last names of employees who are Misters.* 
+select LastName, FirstName from Employees where TitleOfCourtesy = 'Mr.';
+             *Show the list of suppliers and products which they supplies.* 
+select SupplierID, ProductName from Products;
+             *Show the list of first and last names of employees and territories where they live *
+select FirstName, LastName, City as territorie  from Employees;
+              *Show the list of names of employees and dates of their orders.* 
+select FirstName, OrderDate from Employees join Orders O on Employees.EmployeeID = O.EmployeeID;
+              *Show the list of order dates and unit prices.* 
+select OrderDate, UnitPrice from OrderDetails join Orders O on O.OrderID = OrderDetails.OrderID;
+              *Insert 5 new records into Employees table. Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, 
+                Address, City, Country, Notes.
+                The Notes field should contain your own name (to distinguish your records from the ones inserted by other trainees).*
+ ('Homun', 'Petro', '2022-08-01 17:48:20', '2022-08-01 18:00:00', 'Pasichna 20', 'Lviv', 'Ukraine', 'Ihor.Marchuk');
+ ('Kovalyshun', 'Ivan', '22022-09-01 17:49:20', '2022-08-01 18:00:00', 'Pasichna 21', 'Lviv', 'Ukraine', 'Ihor.Marchuk');
+ ('Gileta', 'Vasya', '2020-08-01 17:49:33', '2022-08-01 18:00:00', 'Pasichna 22', 'Lviv', 'Ukraine', 'Ihor.Marchuk');
+ ('Koval', 'Dima', '2022-07-01 17:49:42', '2022-08-01 18:00:00', 'Pasichna 23', 'Lviv', 'Ukraine', 'Ihor.Marchuk').
+                 
+               *Fetch the records you have inserted by the SELECT statement* 
+select * from Employees order by EmployeeID desc limit 5;
+
+                *Change the City field in one of your records using the UPDATE statement (first run the SELECT statement to check whether you are 
+                  updating the appropriate records!).*
+select * from Employees where EmployeeID = 140;
+update Employees set City = 'Kyiv' where EmployeeID= 140;
+
+                *Change the HireDate field in all your records to current date (first run the SELECT statement to check whether you are updating
+                   the appropriate records!).* 
+update Employees set HireDate = '22-08-01 18:00:00' where Notes = 'Ihor.Marchuk';
+                *Delete one of your records (first run the SELECT statement to check whether you are deleting the appropriate record!).* 
+delete from Employees where EmployeeID = 136;
