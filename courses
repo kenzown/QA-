@@ -26,7 +26,7 @@ select LastName, FirstName from Employees where TitleOfCourtesy = 'Mr.';
              *12)Show the list of suppliers and products which they supplies.* 
 select SupplierID, ProductName from Products;
              *13)Show the list of first and last names of employees and territories where they live *
-select FirstName, LastName, City as territorie  from Employees;
+select FirstName, LastName,concat_ws(' ',  Country, City) as territory  from Employees;
              *14)Show the list of names of employees and dates of their orders.* 
 select FirstName, OrderDate from Employees join Orders O on Employees.EmployeeID = O.EmployeeID;
              *15)Show the list of order dates and unit prices.* 
